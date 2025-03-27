@@ -1,0 +1,999 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background: url('../images/b.jpg') no-repeat center center fixed;
+    background-size: cover; /* Ensures the image covers the entire screen */
+    color: #fff; /* Default text color set to white */
+    margin: 0;
+    position: relative; /* This allows positioning of the pseudo-element */
+}
+
+body::before {
+    content: ""; /* Creates an empty element */
+    position: absolute; /* Position it over the body content */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* Black semi-transparent overlay */
+    z-index: -1; /* Ensure the scrim is behind the content */
+}
+/* Style for the side drawer */
+.side-drawer {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Hidden by default */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    color: #fff;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.side-drawer.active {
+    left: 0; /* Show the side drawer */
+}
+
+/* Style for the drawer links */
+.side-drawer .nav-link {
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+/* Style for the Contact and Cart buttons (visible on large screens only) */
+.d-none.d-lg-flex {
+    display: flex;
+    gap: 15px;
+}
+.side-drawer .nav-link:hover {
+    background-color: #444;
+}
+
+/* The toggle button for the menu (only visible on mobile) */
+#sideMenuToggle {
+    background-color: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The hamburger icon */
+#sideMenuToggle i {
+    font-size: 24px;
+}
+
+/* Hide the hamburger menu button on larger screens */
+.d-lg-none {
+    display: block;
+}
+
+/* Hide the hamburger button and show the normal navbar on larger screens */
+@media (min-width: 992px) {
+    #sideMenuToggle {
+        display: none;
+    }
+    .side-drawer {
+        display: none; /* Hide the side drawer on large screens */
+    }
+}
+
+/* Normal Navbar for larger screens */
+.navbar-nav {
+    display: flex;
+    gap: 20px;
+}
+
+
+/* Header Styling */
+header {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem; /* Spacing */
+    border-radius: 0 0 1rem 1rem; /* Rounded bottom corners */
+}
+
+header .brand-name h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+header nav ul {
+    display: flex;
+    gap: 1.5rem; /* Space between links */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.carousel-inner {
+    position: relative;
+    overflow: hidden;  /* Prevents image overflow outside the carousel container */
+}
+.carousel-inner img {
+    width: 100%; /* Ensure the images take up 100% of the container's width */
+    height: auto; /* Allow the height to adjust based on the width */
+    object-fit: cover; /* Ensure the image covers the space without distortion, cropping the image if necessary */
+    object-position: center; /* Ensure the image is centered inside the carousel */
+    display: block; /* Remove any inline spacing */
+}
+
+
+
+.carousel-control-prev {
+    left: 10px;  /* Position the previous arrow on the left side */
+}
+
+.carousel-control-next {
+    right: 10px;  /* Position the next arrow on the right side */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: white;  /* White background for the arrows */
+    border-radius: 50%;  /* Round the arrows */
+    width: 40px;  /* Adjust the size of the arrow icons */
+    height: 40px;  /* Make the arrow icons circular */
+}
+
+.carousel-control-prev-icon {
+    background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"%3e%3cpath fill="currentColor" d="M4.854 0l.707.707L2.207 3.5H8v1H2.207L5.561 7.293 4.854 8 0 4l4.854-4z"%3e%3c/path%3e%3c/svg%3e'); /* Previous arrow */
+}
+.carousel-control-next-icon {
+    background-image: url('data:image/svg+xml,%3csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 8"%3e%3cpath fill="currentColor" d="M3.146 8l-.707-.707L5.793 4.5H0v-1h5.793L2.439.707 3.146 0l4 4-4 4z"%3e%3c/path%3e%3c/svg%3e'); /* Next arrow */
+}
+
+
+/* Make sure the carousel controls are clickable and positioned correctly */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background on hover */
+}
+
+header .nav-link {
+    color: #fff;
+    background-color: #1f1f1f;
+    padding: 0.5rem 1.5rem;
+    border: 2px solid #ff6600;
+    border-radius: 2rem; /* Rounded buttons */
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+}
+
+header .nav-link:hover {
+    background-color: #ff6600;
+    color: #fff !important;
+}
+
+header .btn-contact {
+    background-color: #fff;
+    color: #0f0f0f;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem; /* Rounded button */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    transition: background 0.3s, color 0.3s;
+}
+
+header .btn-contact:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+header .btn-contact i {
+    color: #ff6600; /* Icon color */
+}
+
+/* Home Section */
+.home-section {
+    
+    color: #ff6600; /* Orange text for heading */
+    padding: 2rem 1rem;
+}
+
+.text-section h1 {
+    color: #f2edea; /* Orange color for headers */
+
+}
+
+/* Orange Border Around Paragraph Words */
+/* Orange Border Around Paragraph Words, Each Word on New Line */
+.text-section p {
+    color: #ffffff; /* Ensures readable text color */
+    font-size: 1.4rem; /* Adjust font size as needed */
+    
+}
+
+.text-section p span {
+    display: block; /* Ensures each word starts from a new line */
+    padding: 0.2rem; /* Optional: Padding for spacing */
+}
+
+
+/* Input Section - Updated Design */
+.input-section .container {
+    background-color: #e01a1a; /* White Background */
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.input-section .input-box {
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 0.6rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.input-section .btn-warning {
+    background-color: #ff6600; /* Keep existing button color */
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.input-section .btn-warning:hover {
+    background-color: #e65c00;
+    color: #fff;
+}
+
+/* ZenBuild in Orange */
+.brand-name h2 {
+    color: #ff6600 !important; /* Orange color */
+}
+
+img {
+    width: 100%; /* Ensures images take up the full width of the column */
+    height: 200px; /* Sets a uniform height for all images */
+    object-fit: cover; /* Ensures images are cropped to fit without distortion */
+}
+
+/* Products Section */
+h1.text-light {
+    color: #fff5ee !important; /* Orange header color */
+}
+
+.product-card img {
+    width: 100%; /* Full width within its container */
+    aspect-ratio: 4 / 3; /* Fixed aspect ratio of 4:3 */
+    object-fit: cover; /* Ensures images are cropped proportionally to fit */
+    border-radius: 10px; /* Optional: Rounded corners for a polished look */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow */
+}
+
+p.text-light {
+    color: #fff; /* Ensures product names are white */
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1rem;
+    text-align: center; /* Centers product names */
+}
+
+.product-card:hover img {
+    transform: scale(1.1); /* Zoom the image slightly */
+}
+
+.product-card:hover p {
+    border-color: #ff6600; /* Add an orange border */
+}
+
+/* White Border Around ZenBuild in Header */
+header .brand-name h2 {
+    color: #fff; /* Ensures text is white */
+    text-shadow: 
+        -1px -1px 0 #fff,  
+         1px -1px 0 #fff,
+        -1px  1px 0 #fff,
+         1px  1px 0 #fff; /* Creates white border effect */
+    cursor: pointer; /* Makes it look clickable */
+    transition: transform 0.2s ease-in-out;
+}
+
+header .brand-name h2:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Orange Border Around Home Page Heading */
+/* Orange Border Around Each Word in h1 */
+/* Orange Border Around Each Word in h1 */
+.text-section h1 {
+    color: #fbf9f8; /* Orange text color */
+    font-size: 2.5rem; /* Adjust as needed */
+    text-shadow: 
+        -1px -1px 0 #ff6600,  
+         1px -1px 0 #ff6600,
+        -1px  1px 0 #ff6600,
+         1px  1px 0 #ff6600; /* Creates the border effect */
+    display: inline; /* Ensures each word behaves individually */
+    padding: 0.2rem; /* Optional: Tight padding for spacing */
+}
+/* Orange Border Around Product Images */
+.product-card img {
+    width: 100%; /* Full width within its container */
+    aspect-ratio: 4 / 3; /* Fixed aspect ratio of 4:3 */
+    object-fit: cover; /* Ensures images are cropped proportionally */
+    border-radius: 10px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth zoom effect */
+}
+
+.product-card img:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Styling for Main Heading */
+.text-section h1 {
+    font-family: 'Poppins', sans-serif; /* Modern, clean font */
+    font-size: 3.2rem; /* Large, bold heading */
+    font-weight: 800; /* Extra bold */
+    color: #fef2ec; /* Bright orange */
+    text-transform: uppercase; /* All caps for emphasis */
+    text-align: left; /* Align to left */
+    margin-bottom: 1.5rem; /* Increased spacing below heading */
+    line-height: 1.2; /* Compact line spacing */
+    letter-spacing: 1.5px; /* Subtle spacing between letters */
+}
+
+/* Styling for Paragraph Text */
+.text-section p {
+    font-family: 'Roboto', sans-serif; /* Clean, readable font */
+    font-size: 1.2rem; /* Larger paragraph size */
+    font-weight: 400; /* Regular weight */
+    color: #fff; /* White text color */
+    text-align: left; /* Align to left */
+    line-height: 1.8; /* Improved spacing between lines */
+    max-width: 700px; /* Constrain width for readability */
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 1rem; /* Additional spacing if needed */
+}
+
+
+/* Add Background Styling for Contrast */
+.text-section {
+    
+    padding: 2rem; /* Spacing inside the container */
+    border-radius: 8px; /* Smooth corners */
+    
+    display: inline-block; /* Fit content size */
+}
+
+/* Cart Button Styling */
+header .btn-cart {
+    background-color: #fff; /* White background */
+    color: #ff6600; /* Orange icon color */
+    padding: 0.5rem; /* Smaller padding for the icon */
+    border-radius: 50%; /* Makes it circular */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none; /* No border */
+    font-size: 1.2rem; /* Adjust icon size */
+    transition: background 0.3s, color 0.3s;
+}
+
+header .btn-cart:hover {
+    background-color: #ff6600; /* Orange background */
+    color: #fff; /* White icon color on hover */
+}
+/* Building Button Styling */
+/* Building Button Styling */
+header .btn-building {
+    background-color: #fff;
+    color: #ff6600;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 1.2rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+header .btn-building:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+/* Cart Button Styling */
+header .btn-cart {
+    background-color: #fff;
+    color: #ff6600;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 1.2rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+header .btn-cart:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+/* Product Card Styling */
+/* Transparent Product Card */
+.product-card {
+    background-color: transparent; /* Remove any background color */
+    border: none; /* Remove border */
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: none; /* Remove box shadow */
+    transition: transform 0.3s ease-in-out; /* Keep smooth zoom effect */
+}
+
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Product Image */
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    
+}
+
+/* Product Name */
+/* Product Card Text Alignment */
+.product-card p {
+    color: #fff; /* Ensures product names and price tags are white */
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1rem;
+    text-align: center; /* Centers product names and price tags */
+}
+
+/* Specific Styling for Product Price */
+.product-price {
+    margin-top: 0.5rem; /* Adds space between product name and price */
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff6600; /* Orange color for the price */
+    text-align: center; /* Ensures price is centered */
+}
+
+/* Add to Cart Button */
+.btn-add-to-cart {
+    background-color: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn-add-to-cart:hover {
+    background-color: #e65c00;
+    color: #fff;
+}
+
+/* Input Fields */
+.form-control {
+    border: 1px solid #ccc;
+    border-radius: 50px; /* Rounded input fields */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+
+.btn-contact:hover {
+    background-color: #e65c00; /* Darker orange on hover */
+}
+
+
+/* Input Fields */
+.form-control {
+    border: 1px solid #ffffff;
+    border-radius: 50px; /* Rounded inputs */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}
+
+/* Adjusted Generate Button */
+.btn-contact {
+    background-color: #ff6600; /* Bright orange */
+    color: #fff; /* White text */
+    font-size: 1.2rem; /* Larger text */
+    font-weight: bold; /* Bold text */
+    border: none;
+    border-radius: 50px; /* Rounded edges */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add depth */
+    margin: auto; /* Center alignment */
+    transition: transform 0.3s, background-color 0.3s ease-in-out;
+    
+}
+.btn-contact {
+    padding-top: 12px; /* Adjust padding */
+    padding-bottom: 12px; /* Equal padding for balance */
+    display: inline-block;
+}
+
+/* FAQ Page Styling */
+.faq-section {
+    padding: 2rem;
+    background-color: #f5f5f5;
+    color: #f0e2e2;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.faq-section h1 {
+    text-align: center;
+    color: #ff6600;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.faq {
+    margin-top: 1rem;
+}
+
+.faq .question {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq .question h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #ff6600;
+}
+
+.faq .question p {
+    margin: 0.5rem 0 0;
+    color: #ffefef;
+    font-size: 1rem;
+}
+
+.faq .question:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* About Us Page Styling */
+
+/* Developer Cards */
+.card {
+    background-color: rgba(250, 250, 250, 0.1); /* Transparent white */
+    border: none; /* No border */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+}
+
+.card-img-top {
+    border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+    object-fit: cover;
+    height: 200px; /* Uniform height for all images */
+}
+
+.card-title {
+    color: #ffffff; /* Highlighted in orange */
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.card-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ffffff; /* Light gray text */
+}
+
+
+/* Section Titles */
+h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ff6600;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Text Section */
+section p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* List Styling */
+ul {
+    padding-left: 1.5rem;
+}
+
+ul li {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+ul li strong {
+    color: #faf6f3;
+}
+
+/* Footer Styling */
+footer {
+ 
+    padding: 1rem;
+    border-radius: 15px 15px 0 0; /* Rounded corners at the top */
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    color: #ddd;
+}
+
+footer p {
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+footer p:hover {
+    color: #ff6600;
+    transition: color 0.3s ease;
+}
+
+/* Responsive Design for About Us Page */
+@media (max-width: 768px) {
+    header, footer {
+        text-align: center;
+    }
+
+    .card-img-top {
+        height: auto; /* Adjust height for smaller screens */
+    }
+
+    section p {
+        font-size: 1rem;
+        text-align: justify;
+    }
+}
+
+
+/* Developer Cards Section */
+.developer-card {
+    background-color: transparent; /* Transparent card */
+    border: none; /* No border */
+    border-radius: 10px; /* Smooth corners */
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Slight shadow */
+}
+
+.developer-card img {
+    width: 100%; /* Full width */
+    height: 400px; /* Adjusted height for better fit */
+    object-fit: cover; /* Ensures images are cropped proportionally */
+    border-radius: 10px; /* Smooth corners */
+    margin-bottom: 1rem; /* Space below the image */
+}
+
+.developer-card h3 {
+    font-size: 1.5rem;
+    color: #fff; /* White text */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.developer-card p {
+    font-size: 1rem;
+    color: #ffffff; /* Subtle grey text */
+    line-height: 1.5;
+}
+
+/* Styling for the home page text section */
+.text-section p {
+    font-family: 'Poppins', monospace; /* Clean and modern font */
+    font-size: 1.3rem; /* Increase font size for better visibility */
+    font-weight: 600; /* Extra bold */
+    color: #e1dfdf; /* White text color */
+    line-height: 1.4; /* Increase line spacing for better readability */
+    margin: 1.8rem auto; /* Center the text block and add spacing */
+    max-width: 900px; /* Limit the width for better layout */
+     /* Add horizontal padding */
+}
+/* Hero Section Heading */
+.text-section h1 {
+    font-family: 'Poppins', monospace; /* Clean and modern font */
+    font-size: 3 rem; /* Increase font size for better visibility */
+    font-weight: 800; /* Extra bold */
+    color: #e7e7e7;
+}
+
+
+.accordion-button:not(.collapsed) {
+    color: #ffffff;
+    background-color: #ff6600;
+    
+}
+
+.accordion-item {
+    
+    background-color: #cdcccc;
+    
+}
+
+
+.contact-card {
+    background-color: rgba(0, 0, 0, 0); /* Transparent */
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    height: 100%; /* Ensures equal size */
+}
+
+
+
+.contact-card i {
+    color: #ff6600; /* Icon color */
+}
+
+.contact-card h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Contact Form */
+.contact-form .form-control {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0.8rem;
+    color: #100f0f;
+}
+
+.contact-form textarea {
+    resize: none;
+}
+
+.contact-form button {
+    background-color: #ff6600;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out;
+}
+
+.contact-form button:hover {
+    background-color: #e65c00;
+}
+
+/* Footer Styling */
+footer {
+    
+    color: #ddd;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer .social-icons a {
+    color: #ddd;
+    margin: 0 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+footer .social-icons a:hover {
+    color: #ff6600;
+}
+
+/* Cart Item Styling */
+.cart-item {
+    
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cart-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+.cart-item-actions {
+    text-align: center;
+}
+
+.cart-item-actions button {
+    display: block;
+    width: 80px;
+    margin: 5px 0;
+}
+
+.cart-item p {
+    margin: 0;
+    font-size: 14px;
+}
+.cart-summary h4 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+/* Adjusted Quantity Controls */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-control button {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.quantity-control input {
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin: 0;
+}
+
+
+/* General Form Styling */
+form {
+    margin:  auto;
+    max-width: 1000px;
+    
+    font-size: 1.3rem; 
+}
+
+form .form-label {
+    color: #000000;
+    font-size: 1rem;
+    font-weight: bold;
+    
+}
+
+
+form .btn-contact {
+    background-color: #ff6600;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form .btn-contact:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+/* Specific Styling for Enter Plot Size Heading */
+h2.text-center.mb-4 {
+    color: #ff6600; /* Set text color to black */
+    font-weight: bold; /* Keep the text bold */
+    font-size: 2rem; /* Adjust the size if necessary */
+   
+    
+}
+/* Ensure input text color is black */
+form .form-control {
+    color: #000; /* Black text */
+    background-color: #fff; /* White background for contrast */
+    border: 2px solid #ff6600; /* Keep the orange border */
+    border-radius: 50px; /* Rounded corners */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Focused input styling */
+form .form-control:focus {
+    border-color: #e65c00; /* Darker orange border on focus */
+    box-shadow: 0 0 5px rgba(245, 245, 244, 0.5); /* Add glow effect */
+    color: #000; /* Ensure black text on focus */
+}
+/* Force equal-width columns in the Requirements form */
+.container .row .col-md-2 {
+    flex: 0 0 20%; /* Set each column to take 20% of the row width */
+    max-width: 20%; /* Ensure each input takes up only 20% of the row */
+    padding: 5px; /* Add some padding for spacing between inputs */
+}
+
+/* Ensure inputs are aligned and text color is correct */
+.form-control {
+    color: #000; /* Set text color to black */
+    background-color: #fff; /* Set background to white */
+    border: 2px solid #ff6600; /* Keep the orange border */
+    border-radius: 50px; /* Rounded inputs */
+    font-size: 1rem; /* Keep consistent font size */
+    padding: 0.5rem;
+}
+
+/* Maintain spacing and alignment for Generate button */
+.btn-contact {
+    background-color: #ff6600;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-contact:hover {
+    background-color: #e65c00;
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+label {
+    text-align: left;
+    display: block; /* Ensures the label takes up the full width */
+}
+
+
+/* Styling for Plot Size and Requirements Headings */
+h2.display-5.fw-bold {
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    font-size: 2.2rem; /* Increase font size */
+    font-weight: 800; /* Extra bold */
+    color: #ff6600; /* Bright orange color */
+    text-transform: uppercase; /* All caps for emphasis */
+    text-align: center; /* Center align the text */
+    margin-bottom: 1.5rem; /* Add spacing below */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    letter-spacing: 10px; /* Add slight spacing between letters */
+    border: #ccc;
+    border-radius: 10%;
+}
+
+/* Optional: Add animation effect */
+h2.display-5.fw-bold:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+    color: #ff6600; /* Darker orange on hover */
+    transition: transform 0.3s, color 0.3s ease-in-out; /* Smooth transitions */
+}
